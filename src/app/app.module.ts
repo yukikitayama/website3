@@ -8,6 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PageComponent } from './page/page.component';
 import { CardComponent } from './card/card.component';
 import { FeaturedCardComponent } from './featured-card/featured-card.component';
+import { PagesComponent } from './pages/pages.component';
+import { PageListComponent } from './page-list/page-list.component';
+import { PageItemComponent } from './page-item/page-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { FeaturedCardComponent } from './featured-card/featured-card.component';
     FooterComponent,
     PageComponent,
     CardComponent,
-    FeaturedCardComponent
+    FeaturedCardComponent,
+    PagesComponent,
+    PageListComponent,
+    PageItemComponent
   ],
   imports: [
     BrowserModule
