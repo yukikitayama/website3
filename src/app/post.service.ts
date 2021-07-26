@@ -11,6 +11,10 @@ export class PostService {
     new Post('Title 4', 'AWS', '2021-07-15', 'Description 4'),
   ];
 
+  setPosts(posts: Post[]) {
+    this.posts = posts;
+  }
+
   getPosts() {
     return this.posts.slice();
   }

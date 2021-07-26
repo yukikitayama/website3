@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from '../data-storage.service';
 
 @Component({
   selector: 'app-gcp',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GcpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
+    this.dataStorageService.fetchPosts();
   }
 
+  onFetchData() {
+    this.dataStorageService.fetchPosts();
+  }
 }
