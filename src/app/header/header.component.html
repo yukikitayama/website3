@@ -1,16 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a href="#" class="navbar-brand">Yuki Kitayama</a>
+    <a class="navbar-brand" routerLink="/">Yuki Kitayama</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="#" class="nav-link" (click)="onSelect('gcp')">Google Cloud</a>
+        <li 
+          class="nav-item" 
+          routerLinkActive="acitve"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" (clicl)="onSelect('aws')">AWS</a>
+        <li class="nav-item" routerLinkActive="acitve">
+          <a class="nav-link" routerLink="/gcp">Google Cloud</a>
+        </li>
+        <li class="nav-item" routerLinkActive="acitve">
+          <a class="nav-link" routerLink="/aws">AWS</a>
         </li>
       </ul>
     </div>
