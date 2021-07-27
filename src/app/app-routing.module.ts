@@ -7,12 +7,20 @@ import { PostDetailComponent } from "./post-detail/post-detail.component";
 import { PostStartComponent } from "./post-start/post-start.component";
 
 const appRoutes: Routes = [
-  { path: '/', component: HomeComponent, pathMatch: 'full', children: [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, children: [
     { path: '', component: PostStartComponent },
     { path: ':id', component: PostDetailComponent }
   ] },
-  { path: 'gcp', component: GcpComponent },
-  { path: 'aws', component: AwsComponent }
+  { path: 'gcp', component: GcpComponent, children: [
+    { path: '', component: PostStartComponent },
+    { path: ':id', component: PostDetailComponent }
+  ] },
+  { path: 'aws', component: AwsComponent, children: [
+    { path: '', component: PostStartComponent },
+    { path: ':id', component: PostDetailComponent }
+  ] },
+  { path: '**', redirectTo: '/home' }
 ]
 
 @NgModule({

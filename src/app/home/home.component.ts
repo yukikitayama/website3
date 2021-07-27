@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
 
@@ -10,15 +11,21 @@ import { PostService } from '../post.service';
 })
 export class HomeComponent implements OnInit {
   selectedPost: Post;
+  loadedPosts: Post[] = [];
+  isFetching = false;
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private postService: PostService, 
+    private router: Router, 
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.postService.postSelected.subscribe(
-      (post: Post) => {
-        this.selectedPost = post;
-      }
-    )
+    this.isFetching = true;
+    console.log('Home making get request...')
+    this.postService.fetchPosts().subscribe(posts => {
+      this.isFetching = false;
+      this.loadedPosts = posts;
+    });
   }
-
 }

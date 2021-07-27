@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../data-storage.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Post } from '../post.model';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-gcp',
@@ -7,14 +8,17 @@ import { DataStorageService } from '../data-storage.service';
   styleUrls: ['./gcp.component.css']
 })
 export class GcpComponent implements OnInit {
+  loadedPosts: Post[] = [];
+  isFetching = false;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchPosts();
-  }
-
-  onFetchData() {
-    this.dataStorageService.fetchPosts();
+    this.isFetching = true;
+    console.log('GCP making get request...')
+    this.postService.fetchGcpPosts().subscribe(posts => {
+      this.isFetching = false;
+      this.loadedPosts = posts;
+    });
   }
 }

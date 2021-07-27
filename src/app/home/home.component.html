@@ -1,8 +1,29 @@
 <div class="row">
-  <div class="col-md-5">
-    <app-post-list></app-post-list>
+  <div class="col-md-5 mt-3">
+
+    <!-- <app-post-list></app-post-list> -->
+    <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts available!</p>
+
+    <div class="list-group" *ngIf="loadedPosts.length >= 1 && !isFetching">
+      <!-- <li class="list-group-item" *ngFor="let post of loadedPosts; let i = index"> -->
+        <!-- <h1>{{ post.title }}</h1>
+        <small>{{ post.category }}</small> -->
+      <a
+        style="cursor: pointer;"
+        [routerLink]="['/home', post.id]"
+        routerLinkActive="active"
+        class="list-group-item"
+        *ngFor="let post of loadedPosts; let i = index">
+        <h4 class="list-group-item-heading">{{ post.title }}</h4>
+        <small>{{ post.category }}</small> | <small>{{ post.date }}</small>
+      </a>
+ 
+      <!-- </li> -->
+    </div>
+   
+    <p *ngIf="isFetching">Loading</p>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-7 mt-3">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,12 +11,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostStartComponent } from './post-start/post-start.component';
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'gcp', component: GcpComponent},
-  { path: 'aws', component: AwsComponent}
-]
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,2 +1,33 @@
-<p>gcp works!</p>
-<button class="btn btn-primary" (click)="onFetchData()">Fetch Posts</button>
+<!-- <p>gcp works!</p> -->
+
+<!-- <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts available!</p>
+<ul class="list-group" *ngIf="loadedPosts.length >= 1 && !isFetching">
+  <li class="list-group-item" *ngFor="let post of loadedPosts">
+    <h1>{{ post.title }}</h1>
+    <small>{{ post.category }}</small>
+  </li>
+</ul>
+<p *ngIf="isFetching">Loading</p> -->
+
+<div class="row">
+  <div class="col-md-5 mt-3">
+    <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts available!</p>
+
+    <div class="list-group" *ngIf="loadedPosts.length >= 1 && !isFetching">
+      <a
+        style="cursor: pointer;"
+        [routerLink]="['/gcp', i]"
+        routerLinkActive="active"
+        class="list-group-item"
+        *ngFor="let post of loadedPosts; let i = index">
+        <h4 class="list-group-item-heading">{{ post.title }}</h4>
+        <small>{{ post.category }}</small> | <small>{{ post.date }}</small>
+      </a>
+    </div>
+   
+    <p *ngIf="isFetching">Loading</p>
+  </div>
+  <div class="col-md-7 mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
